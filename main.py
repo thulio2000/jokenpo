@@ -1,7 +1,23 @@
 import random
+from enum import IntEnum
+
+class Action(IntEnum):
+    Rock = 0
+    Paper = 1
+    Scissors = 2
+
+
+def get_user_selection():
+    choices = [f"{action.name}[{action.value}]" for action in Action]
+    choices_str = ", ".join(choices)
+    selection = int(input(f"Enter a choice ({choices_str}): "))
+    action = Action(selection)
+    return action
+
 
 while True:
-    user_action = input("Enter a choice (rock, paper or scissors): ")
+    #user_input = input("Enter a choice (rock[0], paper[1], scissors[2]): ")
+    user_action = int(user_input)
     possible_actions = ["rock", "paper", "scissors"]
     computer_action = random.choice(possible_actions)
     print(f"\nYou chose {user_action}, computer chose {computer_action}. \n")
