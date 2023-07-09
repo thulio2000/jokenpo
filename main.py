@@ -14,7 +14,12 @@ def get_user_selection():
     action = Action(selection)
     return action
 
+def computer_selection():
+    selection = random.randint(0, len(Action) - 1)
+    action = Action(Selection)
+    return action
 
+"""Next step is the determine winner function"""
 while True:
     #user_input = input("Enter a choice (rock[0], paper[1], scissors[2]): ")
     user_action = int(user_input)
