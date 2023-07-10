@@ -1,27 +1,29 @@
 import random
 from enum import IntEnum
 
-class Action(IntEnum):
+class Action(IntEnum): # Player options
     Rock = 0
     Paper = 1
     Scissors = 2
 
 
-def get_user_selection():
+def get_user_selection(): # Human player choice
     choices = [f"{action.name}[{action.value}]" for action in Action]
     choices_str = ", ".join(choices)
     selection = int(input(f"Enter a choice ({choices_str}): "))
     action = Action(selection)
     return action
 
-def computer_selection():
+def get_computer_selection(): #computer action
     selection = random.randint(0, len(Action) - 1)
-    action = Action(Selection)
+    action = Action(selection)
     return action
+
 
 """Next step is the determine winner function"""
 
 def determine_winner(user_action, computer_action):
+    """ Determines outcome of the games, wins, losses and ties """
     if user_action == computer_action:
         print(f"Both players selected {user_action.name}. It's a tie!")
     elif user_action == Action.Rock:
@@ -42,6 +44,7 @@ def determine_winner(user_action, computer_action):
 
 
 while True:
+    """ Game logic, tests whether player choice is valid, determines winner and gives option to play again """
     try:
         user_action = get_user_selection()
     except ValueError as e:
@@ -55,9 +58,3 @@ while True:
     play_again = input("Play again? (y/n): ")
     if play_again.lower() != "y":
         break
-
-"""
-    play_again = input("Play again? (y/n): ")
-    if play_again.lower() != "y":
-        break
-"""
